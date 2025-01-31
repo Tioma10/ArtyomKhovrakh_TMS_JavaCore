@@ -1,12 +1,11 @@
 package lesson13.homework;
 
 public class Validation {
-    private static String password;
 
     public static boolean getValidation(String login, String password, String confirmPassword)
             throws WrongLoginException, WrongPasswordException {
 
-        if (login.contains(" ") == true || login.length() >= 20) {
+        if (login.contains(" ") || login.length() >= 20) {
             throw new WrongLoginException("Incorrect login");
         }
 
@@ -17,11 +16,11 @@ public class Validation {
             }
         }
 
-        if (password.length() >= 20 || hasDigits == false){
+        if (password.length() >= 20 || !hasDigits){
             throw new WrongLoginException("Incorrect password");
         }
 
-        if (password == confirmPassword){
+        if (password.equals(confirmPassword)){
             return true;
         }
 
